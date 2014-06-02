@@ -1,9 +1,9 @@
-  {
+{
   "id": "development",
   "content": {
-  "such": "doge",
-  "github": {
-  "oauth_token":        "''"
+    "such": "doge",
+    "github": {
+      "oauth_token": "''"
+    }
   }
-  }
-  }
+}

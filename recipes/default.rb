@@ -1,5 +1,6 @@
 include_recipe "git"
 include_recipe "envbuilder"
+include_recipe "rvm::system"
 
 user node['bimble-runner']['user'] do
   supports :manage_home => true
@@ -10,6 +11,11 @@ git "/home/bimble/bimble-runner" do
   repository node['bimble-runner']['repo']
   user node['bimble-runner']['user']
   action :sync
+end
+
+link "/home/bimble/bimble-runner/.env" do
+  action :create
+  to "#{node['envbuilder']['base_dir']}/#{node['envbuilder']['filename']}"
 end
 
 cron "bimble" do

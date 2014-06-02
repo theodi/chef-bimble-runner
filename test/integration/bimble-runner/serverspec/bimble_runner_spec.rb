@@ -13,3 +13,7 @@ end
 describe cron do
   it { should have_entry('0 2 * * 3 cd /home/bimble/bimble-runner; bundle exec rake bimble').with_user('bimble') }
 end
+
+describe command("su - bimble -c 'ruby -v'") do
+  its(:stdout) { should match /2.1.0/ }
+end
