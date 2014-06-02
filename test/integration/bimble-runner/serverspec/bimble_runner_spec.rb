@@ -11,6 +11,5 @@ describe file('/home/bimble/bimble-runner/.env') do
 end
 
 describe cron do
-  skip 'whevs'
   it { should have_entry('0 2 * * 3 cd /home/bimble/bimble-runner; bundle exec rake bimble').with_user('bimble') }
 end

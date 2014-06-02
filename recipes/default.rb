@@ -18,5 +18,5 @@ cron "bimble" do
   hour node['bimble-runner']['schedule']['hour']
   weekday node['bimble-runner']['schedule']['day']
   user node['bimble-runner']['user']
-  command "cd /home/bimble; bundle exec rake bimble"
+  command "cd /home/bimble/bimble-runner; bundle exec rake bimble"
 end
