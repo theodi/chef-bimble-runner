@@ -5,11 +5,16 @@ DEPENDENCIES
   envbuilder
     git: git://github.com/theodi/chef-envbuilder.git
     revision: 27252c8b85be41067ce364d62f9779855c5108b0
+  odi-users
+    git: git://github.com/theodi/odi-chef.git
+    revision: bb1f4e7aed83874a0decb07378324085fb83633c
+    rel: site-cookbooks/odi-users
 
 GRAPH
   bimble-runner (0.0.1)
     envbuilder (>= 0.0.0)
     git (>= 0.0.0)
+    odi-users (>= 0.0.0)
     rvm (>= 0.0.0)
   build-essential (2.0.2)
   chef_gem (0.1.0)
@@ -23,6 +28,8 @@ GRAPH
     windows (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
+  java (1.22.0)
+  odi-users (0.2.0)
   runit (1.5.10)
     build-essential (>= 0.0.0)
     yum (~> 3.0)

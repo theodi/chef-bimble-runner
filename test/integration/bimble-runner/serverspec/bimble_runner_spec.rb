@@ -17,3 +17,7 @@ end
 describe command("su - bimble -c 'ruby -v'") do
   its(:stdout) { should match /2.1.0/ }
 end
+
+describe command("su - bimble -c 'cd bimble-runner && bundle show'") do
+  its(:stdout) { should match /\* bimble \(/ }
+end

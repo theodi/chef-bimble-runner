@@ -1,11 +1,11 @@
+include_recipe "build-essential"
 include_recipe "git"
 include_recipe "envbuilder"
-include_recipe "rvm::system"
 
-user node['bimble-runner']['user'] do
-  supports :manage_home => true
-  home "/home/#{node['bimble-runner']['user']}"
-end
+node.set['user'] = node['bimble-runner']['user']
+include_recipe 'odi-users'
+
+include_recipe "rvm::user"
 
 git "/home/bimble/bimble-runner" do
   repository node['bimble-runner']['repo']
@@ -16,6 +16,17 @@ end
 link "/home/bimble/bimble-runner/.env" do
   action :create
   to "#{node['envbuilder']['base_dir']}/#{node['envbuilder']['filename']}"
+end
+
+bash 'bundle the fucking thing' do
+  user 'bimble'
+  cwd '/home/bimble/bimble-runner'
+  path [ '/home/bimble/.rvm/bin' ]
+  code <<-EOF
+#  cd /home/bimble/bimble-runner
+  bundle
+  ruby -v > /tmp/wtf
+  EOF
 end
 
 cron "bimble" do
