@@ -9,6 +9,10 @@ describe file('/home/bimble/bimble-runner/.env') do
   its(:content) { should match /GITHUB_OAUTH_TOKEN: spong/}
 end
 
+describe file('/home/bimble/.rbenv/shims/bimble') do
+  it { should be_file }
+end
+
 describe cron do
   it { should have_entry('0 2 * * 3 cd ~/bimble-runner; ~/.rbenv/shims/bundle exec rake bimble').with_user('bimble') }
 end

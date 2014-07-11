@@ -19,6 +19,7 @@ include_recipe "git"
 git "/home/#{u}/bimble-runner" do
   repository node['bimble-runner']['repo']
   action :sync
+  notifies :run, "bash[bundle]"
 end
 
 link "/home/#{u}/bimble-runner/.env" do
@@ -26,6 +27,16 @@ link "/home/#{u}/bimble-runner/.env" do
   group u
   to "/home/env/env"
   action :create
+end
+
+bash "bundle" do
+  user u
+  group u
+  cwd "/home/#{u}/bimble-runner"
+  code <<-EOF
+    /home/#{u}/.rbenv/shims/bundle install
+  EOF
+  action :nothing
 end
 
 cron "bimble" do
