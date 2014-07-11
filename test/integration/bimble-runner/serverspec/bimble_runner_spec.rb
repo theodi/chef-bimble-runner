@@ -5,6 +5,7 @@ describe file('/home/bimble/bimble-runner/Rakefile') do
 end
 
 describe file('/home/bimble/bimble-runner/.env') do
+  it { should be_file }
   its(:content) { should match /GITHUB_OAUTH_TOKEN: ''/}
 end
 
