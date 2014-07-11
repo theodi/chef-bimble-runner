@@ -1,10 +1,20 @@
-include_recipe "git"
+u = node['bimble-runner']['user']
 
-user node['bimble-runner']['user'] do
-  system true
+group u do
+  action :create
 end
 
-git "/opt/bimble-runner" do
+user u do
+  gid u
+  shell "/bin/bash"
+  home "/home/#{u}"
+  supports :manage_home => true
+  action :create
+end
+
+include_recipe "git"
+
+git "/home/#{u}/bimble-runner" do
   repository node['bimble-runner']['repo']
   action :sync
 end
@@ -14,7 +24,7 @@ cron "bimble" do
   minute "0"
   hour node['bimble-runner']['schedule']['hour']
   weekday node['bimble-runner']['schedule']['day']
-  user node['bimble-runner']['user']
+  user u
   command "cd ~/bimble-runner; ~/.rbenv/shims/bundle exec rake bimble"
 end
 

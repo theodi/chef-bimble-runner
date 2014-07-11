@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe file('/opt/bimble-runner/Rakefile') do
+describe file('/home/bimble/bimble-runner/Rakefile') do
   it { should be_file }
 end
 
-describe file('/opt/bimble-runner/.env') do
+describe file('/home/bimble/bimble-runner/.env') do
   its(:content) { should match /GITHUB_OAUTH_TOKEN: ''/}
 end
 
