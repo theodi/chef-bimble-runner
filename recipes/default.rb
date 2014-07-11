@@ -29,16 +29,6 @@ link "/home/#{u}/bimble-runner/.env" do
   action :create
 end
 
-bash "bundle" do
-  user u
-  group u
-  cwd "/home/#{u}/bimble-runner"
-  code <<-EOF
-    /home/#{u}/.rbenv/shims/bundle install
-  EOF
-  action :nothing
-end
-
 cron "bimble" do
   action :create
   minute "0"
@@ -49,3 +39,13 @@ cron "bimble" do
 end
 
 include_recipe 'odi-ruby'
+
+bash "bundle" do
+  user u
+  group u
+  cwd "/home/#{u}/bimble-runner"
+  code <<-EOF
+    /home/#{u}/.rbenv/shims/bundle install
+  EOF
+  action :nothing
+end
