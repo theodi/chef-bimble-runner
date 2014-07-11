@@ -2,6 +2,9 @@ DEPENDENCIES
   bimble-runner
     path: .
     metadata: true
+  envbuilder
+    git: git://github.com/theodi/chef-envbuilder.git
+    revision: 27252c8b85be41067ce364d62f9779855c5108b0
   odi-ruby
     git: git://github.com/theodi/chef-odi-ruby.git
     revision: 5116add34792735e68fef584f6d9f2ab38a6e429
@@ -11,11 +14,13 @@ DEPENDENCIES
 
 GRAPH
   bimble-runner (0.0.1)
+    envbuilder (>= 0.0.0)
     git (>= 0.0.0)
     odi-ruby (>= 0.0.0)
   build-essential (2.0.2)
   chef_handler (1.1.6)
   dmg (2.2.0)
+  envbuilder (0.2.0)
   git (4.0.2)
     build-essential (>= 0.0.0)
     dmg (>= 0.0.0)

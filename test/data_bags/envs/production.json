@@ -1,6 +1,9 @@
 {
   "id": "production",
   "content" : {
-    "such": "test"
+    "such": "test",
+    "github" : {
+      "oauth_token": "spong"
+    }
   }
 }

@@ -1,9 +1,6 @@
 {
   "id": "development",
   "content" : {
-    "such": "doge",
-    "github" : {
-      "oauth_token": "spong"
-    }
+    "such": "doge"
   }
 }

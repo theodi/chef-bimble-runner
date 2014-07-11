@@ -6,7 +6,7 @@ end
 
 describe file('/home/bimble/bimble-runner/.env') do
   it { should be_file }
-  its(:content) { should match /GITHUB_OAUTH_TOKEN: ''/}
+  its(:content) { should match /GITHUB_OAUTH_TOKEN: spong/}
 end
 
 describe cron do

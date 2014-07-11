@@ -1,3 +1,5 @@
+include_recipe "envbuilder"
+
 u = node['bimble-runner']['user']
 
 group u do
@@ -17,6 +19,13 @@ include_recipe "git"
 git "/home/#{u}/bimble-runner" do
   repository node['bimble-runner']['repo']
   action :sync
+end
+
+link "/home/#{u}/bimble-runner/.env" do
+  owner u
+  group u
+  to "/home/env/env"
+  action :create
 end
 
 cron "bimble" do
