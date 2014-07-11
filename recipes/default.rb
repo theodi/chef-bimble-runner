@@ -15,5 +15,7 @@ cron "bimble" do
   hour node['bimble-runner']['schedule']['hour']
   weekday node['bimble-runner']['schedule']['day']
   user node['bimble-runner']['user']
-  command "cd /opt/bimble-runner; bundle exec rake bimble"
+  command "cd ~/bimble-runner; ~/.rbenv/shims/bundle exec rake bimble"
 end
+
+include_recipe 'odi-ruby'

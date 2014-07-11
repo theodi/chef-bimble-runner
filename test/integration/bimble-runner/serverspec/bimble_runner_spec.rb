@@ -9,5 +9,5 @@ describe file('/opt/bimble-runner/.env') do
 end
 
 describe cron do
-  it { should have_entry('0 2 * * 3 cd /opt/bimble-runner; bundle exec rake bimble').with_user('bimble') }
+  it { should have_entry('0 2 * * 3 cd ~/bimble-runner; ~/.rbenv/shims/bundle exec rake bimble').with_user('bimble') }
 end
